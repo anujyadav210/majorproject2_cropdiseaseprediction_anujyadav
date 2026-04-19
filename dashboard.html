@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dashboard</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="navbar">
+    <h3>Dashboard</h3>
+    <a href="/logout">Logout</a>
+</div>
+
+<div class="card">
+    <h2>Upload Crop Image</h2>
+
+    <form action="/predict" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" onchange="previewImage(event)" required>
+        <button>Predict</button>
+    </form>
+
+    <img id="preview" width="200">
+
+    <!-- ✅ FIXED PREDICTION DISPLAY -->
+    {% if crop and disease %}
+        <h2 style="margin-top:20px;"> Prediction Result</h2>
+
+        <p><b> Crop:</b> {{ crop }}</p>
+        <p><b>⚠ Disease:</b> {{ disease }}</p>
+
+        <img src="{{ image_path }}" width="250">
+    {% endif %}
+
+</div>
+
+<script>
+function previewImage(event){
+    const reader = new FileReader();
+    reader.onload = function(){
+        document.getElementById('preview').src = reader.result;
+    }
+    reader.readAsDataURL(event.target.files[0]);
+}
+</script>
+
+</body>
+</html>
