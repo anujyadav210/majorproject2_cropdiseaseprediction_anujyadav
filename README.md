@@ -63,7 +63,7 @@ Output: Crop + Disease classification
  
  Installation & Setup:
 1️ Clone the repository
-git clone https://github.com/yourusername/crop-disease-prediction.git
+git clone https://github.com/anujyadav210/majorproject2_cropdiseaseprediction_anujyadav.git
 cd crop-disease-prediction
 2️⃣ Install dependencies
 pip install flask tensorflow numpy pillow
